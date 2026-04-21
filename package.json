@@ -1,0 +1,24 @@
+{
+  "name": "typescript-learn-practice",
+  "version": "1.0.0",
+  "description": "A personal repository for learning and practicing TypeScript — from basics to advanced patterns.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlosEGCH/Typescript-Learn-Practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CarlosEGCH/Typescript-Learn-Practice/issues"
+  },
+  "homepage": "https://github.com/CarlosEGCH/Typescript-Learn-Practice#readme",
+  "dependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
