@@ -10,11 +10,13 @@ A personal repository for learning and practicing TypeScript — from basics to 
 
 ## Structure
 
-| Folder | Topics |
+| File | Topics |
 |---|---|
-| `src/01-basics/` | Primitive types, interfaces, functions |
-| `src/02-intermediate/` | Generics, enums, type narrowing |
-| `src/03-advanced/` | Utility types, decorators, conditional types |
+| `src/01-basics/basic-types.ts` | Primitive types, interfaces, type aliases |
+| `src/01-basics/functions.ts` | Function signatures, overloads, optional/default params |
+| `src/01-basics/narrowing.ts` | Type guards, truthiness, equality, assertion functions |
+| `src/02-intermediate/` | *(coming soon)* |
+| `src/03-advanced/` | *(coming soon)* |
 | `src/04-exercises/` | Challenges with solutions |
 | `notes/` | Cheatsheet and reference notes |
 

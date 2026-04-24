@@ -77,3 +77,84 @@ function compareValues(a: string | number, b: string | boolean) {
 }
 compareValues('Hello', 'Hello'); // Both values are the same string: Hello
 compareValues(42, "42"); // The values are different.
+
+
+// ==========================
+// == Type assertions ==
+// ==========================
+
+// Type assertions allow you to tell TypeScript to treat a value as a specific type, even if it cannot be inferred. This can be useful when you know more about the type of a value than TypeScript does.
+function assertString(value: unknown): asserts value is string {
+  if (typeof value !== 'string') {
+    throw new Error('Value is not a string');
+  }
+}
+
+// Example usage of the assertString function
+function printUpperCase(value: unknown) {
+  assertString(value);
+  // After the assertion, TypeScript knows that 'value' is a string, so we can safely call string methods on it.
+  console.log(value.toUpperCase());
+}
+printUpperCase('Hello, TypeScript!'); // HELLO, TYPESCRIPT!
+//printUpperCase(42); // This will throw an error at runtime because 42 is not a string.
+
+
+// ==========================
+// == Assertion functions ==
+// ==========================
+
+// Assertion functions are a special type of function that can be used to assert the type of a value. They are similar to type assertions but are defined as functions that throw an error if the assertion fails.
+function assertIsNumber(value: unknown): asserts value is number {
+  if (typeof value !== 'number') {
+    throw new Error('Value is not a number');
+  }
+}
+
+// Example usage of the assertIsNumber function
+function printDouble(value: unknown) {
+  assertIsNumber(value);
+  // After the assertion, TypeScript knows that 'value' is a number, so we can safely perform arithmetic operations on it.
+  console.log(value * 2);
+}
+printDouble(21); // 42
+//printDouble('Not a number'); // This will throw an error at runtime because the value is not a number.
+
+
+// =========================
+// == Discriminated Unions ==
+// =========================
+
+// Discriminated unions are a powerful way to narrow types based on a common property. They allow you to define a union of types that share a common discriminant property, which can be used to narrow the type based on its value.
+interface Circle {
+  kind: 'circle';
+  radius: number;
+}
+
+interface Square {
+  kind: 'square';
+  sideLength: number;
+}
+
+type Shape = Circle | Square;
+
+function area(shape: Shape) {
+  switch (shape.kind) {
+    case 'circle':
+      // Here, TypeScript knows that 'shape' is a Circle, so we can safely access the 'radius' property.
+      return Math.PI * shape.radius ** 2;
+    case 'square':
+      // Here, TypeScript knows that 'shape' is a Square, so we can safely access the 'sideLength' property.
+      return shape.sideLength ** 2;
+    default:
+      // This case should never happen because we've covered all possible values of 'kind', but it's good practice to handle it anyway.
+      throw new Error('Unknown shape');
+  }
+}
+
+// Example usage of the area function
+const myCircle: Circle = { kind: 'circle', radius: 5 };
+const mySquare: Square = { kind: 'square', sideLength: 4 };
+
+console.log(area(myCircle)); // 78.53981633974483
+console.log(area(mySquare)); // 16
